@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ tr['title'] }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <h1>{{ tr['title'] }}</h1>
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="file" accept=".xlsx" required>
+      <button type="submit">{{ tr['submit'] }}</button>
+    </form>
+    <p>
+      <a href="?lang=en">English</a> | <a href="?lang=ar">العربية</a>
+    </p>
+  </body>
+</html>
