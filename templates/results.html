@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ tr['results'] }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <h1>{{ tr['results'] }}</h1>
+    <table>
+      <tr>
+        <th>{{ tr['column'] }}</th>
+        <th>{{ tr['label'] }}</th>
+        <th>{{ tr['reason'] }}</th>
+        <th>{{ tr['source'] }}</th>
+      </tr>
+      {% for cls in classifications %}
+      <tr>
+        <td>{{ cls.column }}</td>
+        <td>{{ cls.label }}</td>
+        <td>{{ cls.reason }}</td>
+        <td>{{ cls.source_name }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <p><a href="/">{{ tr['upload'] }}</a></p>
+  </body>
+</html>
