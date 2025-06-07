@@ -1,30 +1,36 @@
-# Houkem
+# Data Classify MVP
 
-Houkem is a simple AI‑powered data classification demo. Upload an Excel file and the system will attempt to classify each column according to Saudi PDPL, NDMO and global standards. The classification uses OpenRouter/Qwen when an API key is provided (via `OPENROUTER_API_KEY` environment variable); otherwise a basic heuristic is applied.
+This project provides a minimal backend and frontend for classifying columns in Excel files according to the Saudi NDMO and PDPL policies.
 
 ## Features
+* Upload `.xlsx` files via FastAPI
+* Sample the first five values from each column
+* Classify each column using OpenRouter (GPT‑4) with a Saudi‑specific prompt
+* Streamlit dashboard showing per‑column classifications and overall counts
+* Dockerized services with `docker-compose`
 
-* Upload `.xlsx` files
-* Extract sample rows from each column
-* AI or heuristic classification into **Public**, **Internal**, **Confidential**, or **Top Secret**
-* Multilingual interface (English and Arabic)
-* Minimal Docker setup
+## Quick Start
 
-## Running locally
+1. Copy `.env.sample` to `.env` and provide your OpenRouter API key.
+2. Build and run using docker-compose:
+
+```bash
+docker-compose up --build
+```
+
+Backend will be available at <http://localhost:8000> and Streamlit UI at <http://localhost:8501>.
+
+## Development
 
 ```bash
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-export OPENROUTER_API_KEY=your_key_here  # optional
-python -m houkem.app
+uvicorn backend.main:app --reload
 ```
 
-Then open <http://localhost:5000>.
-
-## Docker
+Then run Streamlit separately:
 
 ```bash
-docker build -t houkem .
-docker run -p 5000:5000 -e OPENROUTER_API_KEY=your_key_here houkem
+streamlit run frontend/streamlit_app.py
 ```

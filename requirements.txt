@@ -1,4 +1,6 @@
-flask
+fastapi
+uvicorn
+requests
 pandas
 openpyxl
-openai
+streamlit
